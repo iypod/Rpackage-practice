@@ -1,5 +1,5 @@
 ---
-title: "skimr package"
+title: "[skimr package](https://cran.r-project.org/web/packages/skimr/index.html)"
 output:
   github_document:
     toc: TRUE
@@ -8,11 +8,12 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+https://cran.r-project.org/web/packages/skimr/index.html
 
 ## パッケージ概要、きっかけ、モチベーション
-リッチなsummaryが作れる。  
-[twitterでみつけた](https://twitter.com/d4tagirl/status/949055803465588736)。  
-ヒストグラムがデータフレームのなかに表示されるのかっこいいからやってみたい。
+- リッチなsummaryが作れる。  
+- [twitterでみつけた](https://twitter.com/d4tagirl/status/949055803465588736)。  
+- ヒストグラムがデータフレームのなかに表示されるのかっこいいからやってみたい。
 
 ## 使うパッケージ
 ```{r message=FALSE, warning=FALSE}

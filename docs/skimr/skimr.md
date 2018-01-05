@@ -1,4 +1,4 @@
-skimr package
+[skimr package](https://cran.r-project.org/web/packages/skimr/index.html)
 ================
 
 -   [パッケージ概要、きっかけ、モチベーション](#パッケージ概要きっかけモチベーション)
@@ -14,12 +14,14 @@ skimr package
 -   [感想](#感想)
 -   [環境](#環境)
 
+<https://cran.r-project.org/web/packages/skimr/index.html>
+
 パッケージ概要、きっかけ、モチベーション
 ----------------------------------------
 
-リッチなsummaryが作れる。
-[twitterでみつけた](https://twitter.com/d4tagirl/status/949055803465588736)。
-ヒストグラムがデータフレームのなかに表示されるのかっこいいからやってみたい。
+-   リッチなsummaryが作れる。
+-   [twitterでみつけた](https://twitter.com/d4tagirl/status/949055803465588736)。
+-   ヒストグラムがデータフレームのなかに表示されるのかっこいいからやってみたい。
 
 使うパッケージ
 --------------
