@@ -199,22 +199,23 @@ iris %>%
   select(-value, -level) %>% 
   spread(stat, formatted) %>%
   select(Species, variable, type, min, p25, mean, median, p75, max, sd, hist, everything()) %>% 
+  arrange(variable) %>% 
   kable()
 ```
 
 | Species    | variable     | type    | min | p25  | mean | median | p75  | max | sd   | hist     | complete | missing | n   |
 |:-----------|:-------------|:--------|:----|:-----|:-----|:-------|:-----|:----|:-----|:---------|:---------|:--------|:----|
 | setosa     | Petal.Length | numeric | 1   | 1.4  | 1.46 | 1.5    | 1.58 | 1.9 | 0.17 | ▁▁▅▇▇▅▂▁ | 50       | 0       | 50  |
-| setosa     | Petal.Width  | numeric | 0.1 | 0.2  | 0.25 | 0.2    | 0.3  | 0.6 | 0.11 | ▂▇▁▂▂▁▁▁ | 50       | 0       | 50  |
-| setosa     | Sepal.Length | numeric | 4.3 | 4.8  | 5.01 | 5      | 5.2  | 5.8 | 0.35 | ▂▃▅▇▇▃▁▂ | 50       | 0       | 50  |
-| setosa     | Sepal.Width  | numeric | 2.3 | 3.2  | 3.43 | 3.4    | 3.68 | 4.4 | 0.38 | ▁▁▃▅▇▃▂▁ | 50       | 0       | 50  |
 | versicolor | Petal.Length | numeric | 3   | 4    | 4.26 | 4.35   | 4.6  | 5.1 | 0.47 | ▁▃▂▆▆▇▇▃ | 50       | 0       | 50  |
-| versicolor | Petal.Width  | numeric | 1   | 1.2  | 1.33 | 1.3    | 1.5  | 1.8 | 0.2  | ▆▃▇▅▆▂▁▁ | 50       | 0       | 50  |
-| versicolor | Sepal.Length | numeric | 4.9 | 5.6  | 5.94 | 5.9    | 6.3  | 7   | 0.52 | ▃▂▇▇▇▃▅▂ | 50       | 0       | 50  |
-| versicolor | Sepal.Width  | numeric | 2   | 2.52 | 2.77 | 2.8    | 3    | 3.4 | 0.31 | ▁▂▃▅▃▇▃▁ | 50       | 0       | 50  |
 | virginica  | Petal.Length | numeric | 4.5 | 5.1  | 5.55 | 5.55   | 5.88 | 6.9 | 0.55 | ▂▇▃▇▅▂▁▂ | 50       | 0       | 50  |
+| setosa     | Petal.Width  | numeric | 0.1 | 0.2  | 0.25 | 0.2    | 0.3  | 0.6 | 0.11 | ▂▇▁▂▂▁▁▁ | 50       | 0       | 50  |
+| versicolor | Petal.Width  | numeric | 1   | 1.2  | 1.33 | 1.3    | 1.5  | 1.8 | 0.2  | ▆▃▇▅▆▂▁▁ | 50       | 0       | 50  |
 | virginica  | Petal.Width  | numeric | 1.4 | 1.8  | 2.03 | 2      | 2.3  | 2.5 | 0.27 | ▂▁▇▃▃▆▅▃ | 50       | 0       | 50  |
+| setosa     | Sepal.Length | numeric | 4.3 | 4.8  | 5.01 | 5      | 5.2  | 5.8 | 0.35 | ▂▃▅▇▇▃▁▂ | 50       | 0       | 50  |
+| versicolor | Sepal.Length | numeric | 4.9 | 5.6  | 5.94 | 5.9    | 6.3  | 7   | 0.52 | ▃▂▇▇▇▃▅▂ | 50       | 0       | 50  |
 | virginica  | Sepal.Length | numeric | 4.9 | 6.23 | 6.59 | 6.5    | 6.9  | 7.9 | 0.64 | ▁▁▃▇▅▃▂▃ | 50       | 0       | 50  |
+| setosa     | Sepal.Width  | numeric | 2.3 | 3.2  | 3.43 | 3.4    | 3.68 | 4.4 | 0.38 | ▁▁▃▅▇▃▂▁ | 50       | 0       | 50  |
+| versicolor | Sepal.Width  | numeric | 2   | 2.52 | 2.77 | 2.8    | 3    | 3.4 | 0.31 | ▁▂▃▅▃▇▃▁ | 50       | 0       | 50  |
 | virginica  | Sepal.Width  | numeric | 2.2 | 2.8  | 2.97 | 3      | 3.18 | 3.8 | 0.32 | ▁▃▇▇▅▃▁▂ | 50       | 0       | 50  |
 
 ### おまじない解除

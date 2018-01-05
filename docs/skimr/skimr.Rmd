@@ -89,6 +89,7 @@ iris %>%
   select(-value, -level) %>% 
   spread(stat, formatted) %>%
   select(Species, variable, type, min, p25, mean, median, p75, max, sd, hist, everything()) %>% 
+  arrange(variable) %>% 
   kable()
 ```
 
