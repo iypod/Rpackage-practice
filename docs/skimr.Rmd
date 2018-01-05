@@ -1,0 +1,108 @@
+---
+title: "skimr package"
+output:
+  github_document:
+    toc: TRUE
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## パッケージ概要、きっかけ、モチベーション
+リッチなsummaryが作れる。  
+[twitterでみつけた](https://twitter.com/d4tagirl/status/949055803465588736)。  
+ヒストグラムがデータフレームのなかに表示されるのかっこいいからやってみたい。
+
+## 使うパッケージ
+```{r message=FALSE, warning=FALSE}
+library(skimr)
+library(dplyr) # %>%とかselectとかを使いたいだけ
+library(tidyr) # spreadをつかいたいだけ
+```
+
+## 本番
+
+### おまじない
+2018年1月5日現在、[ウィンドウズではヒストグラム部分に文字化けが起こるので、おまじないが必要とのこと](https://github.com/ropenscilabs/skimr/blob/master/README.md#limitations-of-current-version)。
+```{r}
+Sys.setlocale("LC_CTYPE", "Chinese")
+```
+
+### セクシーなサマリー
+おまじないしても、hist列は文字化けしている…
+```{r}
+iris %>%
+  skimr::skim()
+```
+
+なお、baseのサマリーはこちらです。セクシーじゃないし、tidyでもないよね。
+```{r}
+iris %>% 
+  summary()
+```
+
+### セクシーなサマリー(ヒストグラム文字化け回避版)
+2018年1月5日現在、[markdownをknitするときは、文字化けがおこる、とのこと](https://github.com/ropenscilabs/skimr/blob/master/README.md#printing-spark-histograms-and-line-graphs-in-knitted-documents)。kable()で回避できるそう。だが、おしゃれさ(?)はちょっと減る、縦持ちのデータフレームっぽい見た目になる、 level列が追加される、value列とformatted列は実質的に同じもの、etc
+```{r}
+iris %>%
+  skimr::skim() %>% 
+  head(11) %>% 
+  kable() # knitrパッケージをロードしなくても、skimrパッケージから呼び出せる
+```
+
+### データフレームで表現したいとき
+skimしたら、そのままdplyrの関数群に放り込むと、縦持ちのデータフレームっぽい見た目になる。
+```{r}
+iris %>%
+  skim() %>%
+  arrange(variable) %>% 
+  head(11)
+```
+
+クラスも若干異なる様子。
+```{r}
+iris %>%
+  skim() %>%
+  class()
+
+iris %>%
+  skim() %>%
+  arrange(variable) %>% 
+  class()
+```
+
+### それはそうと、group_byも通るらしい
+```{r}
+iris %>%
+  group_by(Species) %>% 
+  skim() %>% 
+  head(11) %>% 
+  kable()
+```
+
+### それでは最後にセクシーで文字化けしてないtidyなデータフレームのサマリーを作ってみましょう
+```{r}
+iris %>%
+  group_by(Species) %>% 
+  skim() %>%
+  select(-value, -level) %>% 
+  spread(stat, formatted) %>%
+  select(Species, variable, type, min, p25, mean, median, p75, max, sd, hist, everything()) %>% 
+  kable()
+```
+
+### おまじない解除
+```{r}
+Sys.setlocale("LC_CTYPE", "Japanese")
+```
+
+## 感想
+ただ、ヒストグラムがデータフレームのなかに表示されるのがかっこよかっただけです。
+
+## 環境
+必要ないんだけど、なんとなくやってみたかった。
+```{r}
+devtools::session_info()
+```
+
