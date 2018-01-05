@@ -2,4 +2,4 @@
 パッケージの練習をしてみるさいと。
 
 # リスト
-- [skimar]()：リッチなsummaryが作れる
+- [skimar](https://github.com/iypod/Rpackage-practice/blob/master/docs/skimr/skimr.md)：リッチなsummaryが作れる
